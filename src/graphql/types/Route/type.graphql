@@ -1,0 +1,44 @@
+type Route {
+  _id: ID!
+  name: String!
+  grade_routesetter: String!
+  img_url: String!
+  svg_color: String!
+  svg_type: String!
+  svg: String!
+  tags: [Tag]
+}
+
+enum Tag {
+  TECHNICAL
+  POWERFULL
+  FLEXIBILITY
+  OVERHANG
+  FINGER_STRENGTH
+  BALANCE
+  HEEL_HOOK
+  ENDURANCE
+}
+
+input PostRoute {
+  "Given name by the routesetter"
+  name: String
+  "Grade set by routesetter"
+  grade_routesetter: String
+  "Url of the image"
+  img_url: String
+  "Color of the drawing"
+  svg_color: String
+  "Type of the drawing"
+  svg_type: String
+  "SVG element shape"
+  svg: String
+  "Tags realted to the route style"
+  tags: [Tag]
+}
+
+type CreateRouteMutationResponse {
+  success: Boolean!
+  message: String!
+  route: Route
+}

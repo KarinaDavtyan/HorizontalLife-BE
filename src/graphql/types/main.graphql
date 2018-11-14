@@ -1,0 +1,13 @@
+# import * from "src/graphql/types/Route/type.graphql"
+
+schema {
+  query: Query
+}
+
+type Query {
+  route(_id: ID!): Route
+}
+
+type Mutation {
+  createRoute(route: PostRoute): CreateRouteMutationResponse
+}
