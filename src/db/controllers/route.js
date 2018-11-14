@@ -7,81 +7,56 @@ const url = process.env.MONGO_DB_LOCAL;
 const dbName = process.env.DB_NAME;
 
 const createRoute = async ({ data }) => {
-    let client;
-    try {
-        client = await MongoClient.connect(url, { useNewUrlParser: true });
-        const db = client.db(dbName);
-        const routes = db.collection('routes');
+  let client;
+  try {
+    client = await MongoClient.connect(url, { useNewUrlParser: true });
+    const db = client.db(dbName);
+    const routes = db.collection('routes');
 
-        const { name, grade_routesetter, img_url, svg_color, svg_type, svg, tags } = data;
+    const { name, grade_routesetter, img_url, svg_color, svg_type, svg, tags } = data;
 
-        const route = await routes.insertOne({
-            name,
-            grade_routesetter,
-            img_url,
-            svg_color,
-            svg_type,
-            svg,
-            tags
-        })
-
-        if (route.insertedId) {
-            const res = Object.assign({ _id: route.insertedId.toString() }, data)
-            return res;
- 
-        } else {
-            return;
-        }
-    } catch (err) {
-        //eslint-disable-next-line
-        console.log(err.stack);
+    const route = await routes.insertOne({
+      name,
+      grade_routesetter,
+      img_url,
+      svg_color,
+      svg_type,
+      svg,
+      tags
+    })
+    if (route.insertedId) {
+      const res = Object.assign({ _id: route.insertedId.toString() }, data)
+      return res;
+    } else {
+      return;
     }
-    client.close();
+  } catch (err) {
+    console.error(err.stack);
+  }
+  client.close();
 }
 
 const getRoute = async (data) => {
-    let client;
-    try {
-        client = await MongoClient.connect(url, { useNewUrlParser: true });
-        const db = client.db(dbName);
-        const routes = db.collection('routes');
+  let client;
+  try {
+    client = await MongoClient.connect(url, { useNewUrlParser: true });
+    const db = client.db(dbName);
+    const routes = db.collection('routes');
 
-        const route = await routes.findOne({
-            _id: new ObjectId(data._id)
-        })
-        if (route) {
-            route._id = route._id.toString();
-            return route
-        } else {
-            return;
-        }
-    } catch (err) {
-        //eslint-disable-next-line
-        console.log(err.stack);
+    const route = await routes.findOne({
+      _id: new ObjectId(data._id)
+    })
+    if (route) {
+      route._id = route._id.toString();
+      return route
+    } else {
+      return;
     }
-    client.close();
-}
-
-const deleteRoute = async (_id) => {
-    let client;
-    try {
-        client = await MongoClient.connect(url, { useNewUrlParser: true });
-        const db = client.db(dbName);
-        const routes = db.collection('routes');
-
-        const deletedRoute = await routes.deleteOne({
-            _id: new ObjectId(_id)
-        })
-        if (deletedRoute.deletedCount > 0) {
-            return _id
-        } else {
-            return;
-        }
-    } catch (err) {
-        //eslint-disable-next-line
-        console.log(err.stack);
-    }
-    client.close();
+  } catch (err) {
+    //eslint-disable-next-line
+      console.log(err.stack);
+  }
+  client.close();
 }
 
 const getAllRoutes = async () => {

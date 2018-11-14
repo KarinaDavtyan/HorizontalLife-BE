@@ -42,19 +42,19 @@ export default {
           }
           const result = Object.assign(
             { route }, response
-            )
-            return result;
-          } else {
-            const response = {
-              success: false,
-              message: `Route ${data.name} NOT added`
-            }
-            return response;
+          )
+          return result;
+        } else {
+          const response = {
+            success: false,
+            message: `Route ${data.name} NOT added`
           }
-        } catch (e) {
-          console.log(e, "ERROR createRoute");
+          return response;
         }
-      },
+      } catch (e) {
+        console.error(e, 'ERROR in createRoute Mutation');
+      }
     },
-    Tag: tagInternalValue
+  },
+  Tag: tagInternalValue
 }

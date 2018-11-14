@@ -1,7 +1,7 @@
-const { getRoute, createRoute, getAllRoutes } = require('./controllers/route.js');
+import { getRoute, createRoute, getAllRoutes } from './controllers/route.js';
 
 module.exports = {
-    getRoute,
-    createRoute,
-    getAllRoutes
+  getRoute,
+  createRoute,
+  getAllRoutes
 }

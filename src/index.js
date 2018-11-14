@@ -1,5 +1,5 @@
 import Koa from 'koa';
-import { ApolloServer, gql } from 'apollo-server-koa';
+import { ApolloServer } from 'apollo-server-koa';
 import { importSchema } from 'graphql-import'
 
 import types from './graphql/types/main.graphql';
@@ -16,5 +16,5 @@ const app = new Koa();
 server.applyMiddleware({ app });
 
 app.listen(port, host, () =>
-    console.log(`🚀 Server ready at http://${host}:${port}${server.graphqlPath}`),
+  console.log(`🚀 Server ready at http://${host}:${port}${server.graphqlPath}`), //eslint-disable-line
 );
