@@ -6,6 +6,7 @@ schema {
 
 type Query {
   route(_id: ID!): Route
+  all_routes: [Route]
 }
 
 type Mutation {

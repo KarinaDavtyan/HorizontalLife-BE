@@ -1,6 +1,7 @@
-const { getRoute, createRoute } = require('./controllers/route.js');
+const { getRoute, createRoute, getAllRoutes } = require('./controllers/route.js');
 
 module.exports = {
     getRoute,
     createRoute,
+    getAllRoutes
 }

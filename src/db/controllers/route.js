@@ -49,7 +49,6 @@ const getRoute = async (data) => {
         const route = await routes.findOne({
             _id: new ObjectId(data._id)
         })
-        console.log(route);
         if (route) {
             route._id = route._id.toString();
             return route
@@ -85,7 +84,25 @@ const deleteRoute = async (_id) => {
     client.close();
 }
 
+const getAllRoutes = async () => {
+  let client;
+  try {
+    client = await MongoClient.connect(url, { useNewUrlParser: true });
+    const db = client.db(dbName);
+    const routes = db.collection('routes');
+
+    const routesArray = await routes.find().toArray();
+    const routesWithStrID = routesArray.map(idToString);
+    return routesWithStrID;
+  } catch (err) {
+    //eslint-disable-next-line
+    console.log(err.stack);
+  }
+  client.close();
+}
+
 module.exports = {
-    createRoute,
-    getRoute
+  createRoute,
+  getRoute,
+  getAllRoutes
 }

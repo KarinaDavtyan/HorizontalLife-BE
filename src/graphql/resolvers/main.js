@@ -12,25 +12,19 @@ const tagInternalValue = {
 }
 
 export default {
-  Tag: tagInternalValue,
   Query: {
     route: async (_, args) => {
       const route = await db.getRoute({ _id: args._id });
       return route;
-    }
+    },
+    all_routes: async () => {
+      const all_routes = await db.getAllRoutes();
+      return all_routes;
+    },
   },
   Mutation: {
     createRoute: async (root, args) => {
       try {
-        // const data = {
-        //   name: args.route.routeName,
-        //   grade_routesetter: args.route.grade,
-        //   img_url: args.route.imageUri,
-        //   svg_color: args.route.color,
-        //   svg_type: args.route.type,
-        //   svg: args.route.svg,
-        //   tags: args.route.chosenTags
-        // };
         const data = {
           name: args.route.name,
           grade_routesetter: args.route.grade_routesetter,
@@ -48,18 +42,19 @@ export default {
           }
           const result = Object.assign(
             { route }, response
-          )
-          return result;
-        } else {
-          const response = {
-            success: false,
-            message: `Route ${data.name} NOT added`
+            )
+            return result;
+          } else {
+            const response = {
+              success: false,
+              message: `Route ${data.name} NOT added`
+            }
+            return response;
           }
-          return response;
+        } catch (e) {
+          console.log(e, "ERROR createRoute");
         }
-      } catch (e) {
-        console.log(e, "ERROR createRoute");
-      }
+      },
     },
-  }
+    Tag: tagInternalValue
 }
