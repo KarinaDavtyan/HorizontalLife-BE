@@ -1,4 +1,7 @@
+import merge from 'lodash.merge';
+
 import db from '../../db';
+import Gym from '../types/Gym/resolvers.js';
 
 const tagInternalValue = {
   TECHNICAL: 'technical',
@@ -11,7 +14,7 @@ const tagInternalValue = {
   ENDURANCE: 'endurance'
 }
 
-export default {
+const resolvers =  {
   Query: {
     route: async (_, args) => {
       const route = await db.getRoute({ _id: args._id });
@@ -20,6 +23,14 @@ export default {
     all_routes: async () => {
       const all_routes = await db.getAllRoutes();
       return all_routes;
+    },
+    gym: async (_, args) => {
+      const gym = await db.getGym({ _id: args._id });
+      return gym;
+    },
+    all_gyms: async () => {
+      const all_gyms = await db.getAllGyms();
+      return all_gyms;
     },
   },
   Mutation: {
@@ -55,6 +66,38 @@ export default {
         console.error(e, 'ERROR in createRoute Mutation');
       }
     },
+    createGym: async (root, args) => {
+      try {
+        const data = {
+          name: args.gym.name,
+          img_url: args.gym.img_url,
+          lat: args.gym.lat,
+          lon: args.gym.lon
+        };
+        const gym = await db.createGym({ data });
+        if (gym) {
+          const response = {
+            success: true,
+            message: `Gym ${gym._id} successfully added`
+          }
+          const result = Object.assign(
+            { gym }, response
+          )
+          return result;
+        } else {
+          const response = {
+            success: false,
+            message: `Gym ${data.name} NOT added`
+          }
+          return response;
+        }
+      } catch (e) {
+        console.error(e, 'ERROR in createGym Mutation');
+      }
+    },
   },
   Tag: tagInternalValue
 }
+
+export default merge(
+  resolvers, Gym);

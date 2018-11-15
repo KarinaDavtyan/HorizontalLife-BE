@@ -5,7 +5,6 @@ import { importSchema } from 'graphql-import'
 import types from './graphql/types/main.graphql';
 import resolvers from './graphql/resolvers/main.js';
 
-
 const port = 3000;
 const host = 'localhost';
 

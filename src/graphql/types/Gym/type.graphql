@@ -1,0 +1,65 @@
+# import * from "../Route/type.graphql"
+# import * from "./menu.graphql"
+
+
+type Gym {
+  _id: ID!
+  name: String!
+  img_url: String
+  lat: Int!
+  lon: Int!
+  grade_min: String
+  grade_max: String
+  routes: [Route]
+  # menu: Menu
+  # facilities: Facilities
+  # timetable: [Day] 
+}
+
+type Day {
+  name: Week
+  open: Boolean
+  opening_hours: String
+  closing_hours: String
+}
+
+enum Week {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+type Facilities {
+  wifi: Boolean
+  shower: Boolean
+  lockers: Boolean
+  climbing_store: Boolean
+  gym: Boolean
+  campus_board: Boolean
+  moonboard: Boolean 
+}
+
+input PostGym {
+  "Name of the gym"
+  name: String!
+  "Url of the image"
+  img_url: String!
+  "Latitude coordinate of the gym"
+  lat: Int!
+  "Longitude coordinate of the gym"
+  lon: Int!
+  "Min grade of the routes available in the gym"
+  grade_min: String
+  "Max grade of the routes available in the gym"
+  grade_max: String
+}
+
+type CreateGymMutationResponse {
+  success: Boolean!
+  message: String!
+  gym: Gym
+}

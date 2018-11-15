@@ -1,7 +1,12 @@
-import { getRoute, createRoute, getAllRoutes } from './controllers/route.js';
+import { createRoute, getRoute, getAllRoutes } from './controllers/route.js';
+import { createGym, getGym, getAllGyms } from './controllers/gym.js';
 
 module.exports = {
-  getRoute,
   createRoute,
-  getAllRoutes
+  getRoute,
+  getAllRoutes,
+
+  createGym,
+  getGym,
+  getAllGyms
 }
