@@ -38,6 +38,7 @@ const resolvers =  {
       try {
         const data = {
           name: args.route.name,
+          gym_id: args.route.gym_id,
           grade_routesetter: args.route.grade_routesetter,
           img_url: args.route.img_url,
           svg_color: args.route.svg_color,

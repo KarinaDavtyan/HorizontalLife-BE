@@ -12,8 +12,9 @@ const createRoute = async ({ data }) => {
     client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(dbName);
     const routes = db.collection('routes');
+    const gyms = db.collection('gyms');
 
-    const { name, grade_routesetter, img_url, svg_color, svg_type, svg, tags } = data;
+    const { name, grade_routesetter, img_url, svg_color, svg_type, svg, tags, gym_id } = data;
 
     const route = await routes.insertOne({
       name,
@@ -22,11 +23,23 @@ const createRoute = async ({ data }) => {
       svg_color,
       svg_type,
       svg,
-      tags
+      tags,
+      gym_id: new ObjectId(gym_id)
     })
     if (route.insertedId) {
-      const res = Object.assign({ _id: route.insertedId.toString() }, data)
-      return res;
+      const targetGym = await gyms.updateOne(
+        { _id: new ObjectId(gym_id) },
+        { $push: { routes: new ObjectId(route.insertedId) } }
+      )
+      if (targetGym.modifiedCount > 0) {
+        const res = {
+          ...data,
+          _id: route.insertedId.toString()
+        };
+        return res;
+      } else {
+        console.error('route wasnt appended to gym');
+      }
     } else {
       return;
     }
