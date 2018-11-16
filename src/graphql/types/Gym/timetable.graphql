@@ -1,8 +1,8 @@
 type Day {
-  name: Week
-  open: Boolean
-  opening_hours: String
-  closing_hours: String
+  name: Week!
+  open: Boolean!
+  opening_hours: String!
+  closing_hours: String!
 }
 
 enum Week {
@@ -17,11 +17,11 @@ enum Week {
 
 input DayInput {
   "Day of the week"
-  name: Week
+  name: Week!
   "Working or non working day"
-  open: Boolean
+  open: Boolean!
   "Regular opening hours of the day"
-  opening_hours: String
+  opening_hours: String!
   "Regular closing hours of the day"
-  closing_hours: String
+  closing_hours: String!
 }

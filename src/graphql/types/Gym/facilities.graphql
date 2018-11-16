@@ -1,11 +1,11 @@
 type Facilities {
-  wifi: Boolean
-  shower: Boolean
-  lockers: Boolean
-  climbing_store: Boolean
-  gym: Boolean
-  campus_board: Boolean
-  moonboard: Boolean 
+  wifi: Boolean!
+  shower: Boolean!
+  lockers: Boolean!
+  climbing_store: Boolean!
+  gym: Boolean!
+  campus_board: Boolean!
+  moonboard: Boolean!
 }
 
 input FacilitiesInput {

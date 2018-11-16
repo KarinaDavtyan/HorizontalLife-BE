@@ -1,11 +1,9 @@
 type Menu {
-  _id: ID!
-  items: [MenuItem]!
+  items: [MenuItem]
   popular_items: [MenuItem]
 }
 
 type MenuItem {
-  _id: ID!
   name: String!
   type: MenuItemType!
   price: Int!

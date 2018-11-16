@@ -7,20 +7,20 @@
 type Gym {
   _id: ID!
   name: String!
-  img_url: String
-  lat: Float!
-  lon: Float!
+  img_url: String!
+  lat: Float
+  lon: Float
   grade_min: String
   grade_max: String
   routes: [Route]
   menu: Menu
   facilities: Facilities
-  timetable: [Day] 
+  timetable: [Day]
 }
 
 input PostGym {
   "Name of the gym"
-  name: String
+  name: String!
   "Url of the image"
   img_url: String!
   "Latitude coordinate of the gym"
@@ -36,7 +36,7 @@ input PostGym {
   "Additional services of the climbing gym"
   facilities: FacilitiesInput
   "Gyms regular timetable"
-  timetable: [DayInput]
+  timetable: [DayInput]!
 }
 
 type CreateGymMutationResponse {

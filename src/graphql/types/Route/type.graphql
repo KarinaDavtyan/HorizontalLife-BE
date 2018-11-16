@@ -4,11 +4,11 @@ type Route {
   name: String!
   grade_routesetter: String!
   img_url: String!
-  img_height: Int
-  img_width: Int
+  img_height: Int!
+  img_width: Int!
   svg: String!
-  svg_height: Int
-  svg_width: Int
+  svg_height: Int!
+  svg_width: Int!
   svg_color: String!
   svg_type: String!
   tags: [Tag]
@@ -31,25 +31,25 @@ input PostRoute {
   "Id of the climbing gym"
   gym_id: ID!
   "Grade set by routesetter"
-  grade_routesetter: String
+  grade_routesetter: String!
   "Url of the image"
   img_url: String!
   "Image height"
-  img_height: Int
+  img_height: Int!
   "Image width"
-  img_width: Int
+  img_width: Int!
   "SVG element shape"
-  svg: String
+  svg: String!
   "Height of the svg container"
-  svg_height: Int
+  svg_height: Int!
   "Width of the svg container"
-  svg_width: Int
+  svg_width: Int!
   "Color of the drawing"
-  svg_color: String
+  svg_color: String!
   "Type of the drawing"
-  svg_type: String
+  svg_type: String!
   "Tags realted to the route style"
-  tags: [Tag]
+  tags: [Tag]!
 }
 
 type CreateRouteMutationResponse {
