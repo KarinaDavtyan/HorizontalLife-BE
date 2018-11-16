@@ -38,9 +38,13 @@ const resolvers =  {
           gym_id: args.route.gym_id,
           grade_routesetter: args.route.grade_routesetter,
           img_url: args.route.img_url,
+          img_height: args.route.img_height,
+          img_width: args.route.img_width,
+          svg: args.route.svg,
           svg_color: args.route.svg_color,
           svg_type: args.route.svg_type,
-          svg: args.route.svg,
+          svg_height: args.route.svg_height,
+          svg_width: args.route.svg_width,
           tags: args.route.tags
         };
         const route = await db.createRoute({ data });
@@ -70,8 +74,15 @@ const resolvers =  {
           name: args.gym.name,
           img_url: args.gym.img_url,
           lat: args.gym.lat,
-          lon: args.gym.lon
+          lon: args.gym.lon,
+          grade_min: args.gym.grade_min,
+          grade_max: args.gym.grade_max,
+          routes: args.gym.routes,
+          menu: args.gym.menu,
+          timetable: args.gym.timetable, 
+          facilities: args.gym.facilities
         };
+        
         const gym = await db.createGym({ data });
         if (gym) {
           const response = {

@@ -8,8 +8,8 @@ type Gym {
   _id: ID!
   name: String!
   img_url: String
-  lat: Int!
-  lon: Int!
+  lat: Float!
+  lon: Float!
   grade_min: String
   grade_max: String
   routes: [Route]
@@ -24,9 +24,9 @@ input PostGym {
   "Url of the image"
   img_url: String!
   "Latitude coordinate of the gym"
-  lat: Int!
+  lat: Float!
   "Longitude coordinate of the gym"
-  lon: Int!
+  lon: Float!
   "Min grade of the routes available in the gym"
   grade_min: String
   "Max grade of the routes available in the gym"

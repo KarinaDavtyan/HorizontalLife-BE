@@ -12,14 +12,30 @@ const createGym = async ({ data }) => {
     const db = client.db(dbName);
     const gyms = db.collection('gyms');
 
-    const { name, img_url, lat, lon } = data;
+    const {
+      name,
+      img_url,
+      lat,
+      lon,
+      grade_min,
+      grade_max,
+      menu,
+      timetable, 
+      facilities
+    } = data;
+    const routes = data.routes || [];
 
     const gym = await gyms.insertOne({
       name,
       img_url,
       lat,
       lon,
-      routes: [], //initialize array in order to push route's ID ref on create
+      grade_min,
+      grade_max,
+      routes,
+      menu,
+      timetable,
+      facilities,
     })
 
     if (gym.insertedId) {

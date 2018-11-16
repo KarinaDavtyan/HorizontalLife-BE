@@ -14,18 +14,36 @@ const createRoute = async ({ data }) => {
     const routes = db.collection('routes');
     const gyms = db.collection('gyms');
 
-    const { name, grade_routesetter, img_url, svg_color, svg_type, svg, tags, gym_id } = data;
-
-    const route = await routes.insertOne({
+    const {
+      gym_id,
       name,
       grade_routesetter,
       img_url,
+      img_height,
+      img_width,
+      svg,
+      svg_height,
+      svg_width,
       svg_color,
       svg_type,
+      tags
+    } = data;
+    
+    const route = await routes.insertOne({
+      gym_id: new ObjectId(gym_id),
+      name,
+      grade_routesetter,
+      img_url,
+      img_height,
+      img_width,
       svg,
-      tags,
-      gym_id: new ObjectId(gym_id)
+      svg_height,
+      svg_width,
+      svg_color,
+      svg_type,
+      tags
     })
+
     if (route.insertedId) {
       const targetGym = await gyms.updateOne(
         { _id: new ObjectId(gym_id) },
