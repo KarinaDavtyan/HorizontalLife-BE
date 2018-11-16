@@ -1,7 +1,4 @@
-import merge from 'lodash.merge';
-
 import db from '../../db';
-import Gym from '../types/Gym/resolvers.js';
 
 const tagInternalValue = {
   TECHNICAL: 'technical',
@@ -100,5 +97,4 @@ const resolvers =  {
   Tag: tagInternalValue
 }
 
-export default merge(
-  resolvers, Gym);
+export default resolvers;

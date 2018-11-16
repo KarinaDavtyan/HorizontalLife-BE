@@ -1,5 +1,7 @@
 # import * from "../Route/type.graphql"
 # import * from "./menu.graphql"
+# import * from "./facilities.graphql"
+# import * from "./timetable.graphql"
 
 
 type Gym {
@@ -11,41 +13,14 @@ type Gym {
   grade_min: String
   grade_max: String
   routes: [Route]
-  # menu: Menu
-  # facilities: Facilities
-  # timetable: [Day] 
-}
-
-type Day {
-  name: Week
-  open: Boolean
-  opening_hours: String
-  closing_hours: String
-}
-
-enum Week {
-  MONDAY
-  TUESDAY
-  WEDNESDAY
-  THURSDAY
-  FRIDAY
-  SATURDAY
-  SUNDAY
-}
-
-type Facilities {
-  wifi: Boolean
-  shower: Boolean
-  lockers: Boolean
-  climbing_store: Boolean
-  gym: Boolean
-  campus_board: Boolean
-  moonboard: Boolean 
+  menu: Menu
+  facilities: Facilities
+  timetable: [Day] 
 }
 
 input PostGym {
   "Name of the gym"
-  name: String!
+  name: String
   "Url of the image"
   img_url: String!
   "Latitude coordinate of the gym"
@@ -56,6 +31,12 @@ input PostGym {
   grade_min: String
   "Max grade of the routes available in the gym"
   grade_max: String
+  "Menu of the gyms bar"
+  menu: MenuInput
+  "Additional services of the climbing gym"
+  facilities: FacilitiesInput
+  "Gyms regular timetable"
+  timetable: [DayInput]
 }
 
 type CreateGymMutationResponse {

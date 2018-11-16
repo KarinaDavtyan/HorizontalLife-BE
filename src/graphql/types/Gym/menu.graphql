@@ -17,3 +17,21 @@ enum MenuItemType {
   BEVERAGE
   MISC
 }
+
+input MenuInput {
+  "Items of the menu"
+  items: [MenuItemInput]!
+  "Optional popular items, gym wants to display"
+  popular_items: [MenuItemInput]
+}
+
+input MenuItemInput {
+  "Descriptive name of item"
+  name: String!
+  "Type of the item Food/Beverage/Misc"
+  type: MenuItemType!
+  "Price in the local currency"
+  price: Int!
+  "Local currency"
+  currency: String!
+}
