@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const { idToString } = require('../../helpers');
 const { MongoClient, ObjectId } = require('mongodb');
 
@@ -36,7 +36,7 @@ const createGym = async ({ data }) => {
       menu,
       timetable,
       facilities,
-    })
+    });
 
     if (gym.insertedId) {
       const res = {
@@ -53,7 +53,7 @@ const createGym = async ({ data }) => {
       console.log(err.stack);
   }
   client.close();
-}
+};
 
 const getGym = async (data) => {
   let client;
@@ -84,7 +84,7 @@ const getGym = async (data) => {
     console.error(err.stack);
   }
   client.close();
-}
+};
 
 const getAllGyms = async () => {
   let client;
@@ -100,10 +100,10 @@ const getAllGyms = async () => {
     console.error(err.stack);
   }
   client.close();
-}
+};
 
 module.exports = {
   createGym,
   getGym,
   getAllGyms
-}
+};

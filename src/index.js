@@ -10,7 +10,7 @@ import resolvers from './graphql/resolvers/main.js';
 const port = process.env.PORT || 3000;
 const host = 'localhost';
 
-const typeDefs = importSchema(types)
+const typeDefs = importSchema(types);
 
 const server = new ApolloServer({ typeDefs, resolvers });
 const app = new Koa();

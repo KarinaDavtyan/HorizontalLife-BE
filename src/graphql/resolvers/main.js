@@ -9,7 +9,7 @@ const tagInternalValue = {
   BALANCE: 'balance',
   HEEL_HOOK: 'heel hook',
   ENDURANCE: 'endurance'
-}
+};
 
 const resolvers =  {
   Query: {
@@ -52,16 +52,17 @@ const resolvers =  {
           const response = {
             success: true,
             message: `Route ${route._id} successfully added`
-          }
-          const result = Object.assign(
-            { route }, response
-          )
+          };
+          const result = {
+            ...response,
+            route
+          };
           return result;
         } else {
           const response = {
             success: false,
             message: `Route ${data.name} NOT added`
-          }
+          };
           return response;
         }
       } catch (e) {
@@ -88,16 +89,17 @@ const resolvers =  {
           const response = {
             success: true,
             message: `Gym ${gym._id} successfully added`
-          }
-          const result = Object.assign(
-            { gym }, response
-          )
+          };
+          const result = {
+            ...response,
+            gym
+          };
           return result;
         } else {
           const response = {
             success: false,
             message: `Gym ${data.name} NOT added`
-          }
+          };
           return response;
         }
       } catch (e) {
@@ -106,6 +108,6 @@ const resolvers =  {
     },
   },
   Tag: tagInternalValue
-}
+};
 
 export default resolvers;
