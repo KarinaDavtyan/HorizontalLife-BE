@@ -1,0 +1,27 @@
+type Day {
+  name: Week!
+  open: Boolean!
+  opening_hours: String!
+  closing_hours: String!
+}
+
+enum Week {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+input DayInput {
+  "Day of the week"
+  name: Week!
+  "Working or non working day"
+  open: Boolean!
+  "Regular opening hours of the day"
+  opening_hours: String!
+  "Regular closing hours of the day"
+  closing_hours: String!
+}

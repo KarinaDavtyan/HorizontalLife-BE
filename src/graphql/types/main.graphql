@@ -1,0 +1,18 @@
+# import * from "src/graphql/types/Route/type.graphql"
+# import * from "src/graphql/types/Gym/type.graphql"
+
+schema {
+  query: Query
+}
+
+type Query {
+  route(_id: ID!): Route
+  all_routes: [Route]
+  gym(_id: ID!): Gym
+  all_gyms: [Gym]
+}
+
+type Mutation {
+  createRoute(route: PostRoute): CreateRouteMutationResponse
+  createGym(gym: PostGym): CreateGymMutationResponse
+}

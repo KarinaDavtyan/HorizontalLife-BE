@@ -1,0 +1,46 @@
+# import * from "../Route/type.graphql"
+# import * from "./menu.graphql"
+# import * from "./facilities.graphql"
+# import * from "./timetable.graphql"
+
+
+type Gym {
+  _id: ID!
+  name: String!
+  img_url: String!
+  lat: Float
+  lon: Float
+  grade_min: String
+  grade_max: String
+  routes: [Route]
+  menu: Menu
+  facilities: Facilities
+  timetable: [Day]
+}
+
+input PostGym {
+  "Name of the gym"
+  name: String!
+  "Url of the image"
+  img_url: String!
+  "Latitude coordinate of the gym"
+  lat: Float!
+  "Longitude coordinate of the gym"
+  lon: Float!
+  "Min grade of the routes available in the gym"
+  grade_min: String
+  "Max grade of the routes available in the gym"
+  grade_max: String
+  "Menu of the gyms bar"
+  menu: MenuInput
+  "Additional services of the climbing gym"
+  facilities: FacilitiesInput
+  "Gyms regular timetable"
+  timetable: [DayInput]!
+}
+
+type CreateGymMutationResponse {
+  success: Boolean!
+  message: String!
+  gym: Gym
+}

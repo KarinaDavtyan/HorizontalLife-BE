@@ -1,0 +1,26 @@
+type Facilities {
+  wifi: Boolean!
+  shower: Boolean!
+  lockers: Boolean!
+  climbing_store: Boolean!
+  gym: Boolean!
+  campus_board: Boolean!
+  moonboard: Boolean!
+}
+
+input FacilitiesInput {
+  "Availability of wifi in the gym"
+  wifi: Boolean!
+  "Availability of shower in the gym"
+  shower: Boolean!
+  "Availability of lockers in the gym"
+  lockers: Boolean!
+  "Availability of climbing store in the gym"
+  climbing_store: Boolean!
+  "Availability of common gym"
+  gym: Boolean!
+  "Availability of campus board"
+  campus_board: Boolean!
+  "Availability of moonboard"
+  moonboard: Boolean!
+}
