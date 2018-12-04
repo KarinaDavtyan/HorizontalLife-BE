@@ -1,0 +1,14 @@
+type Circle {
+  timestamp: Float
+  x: Float!
+  y: Float!
+}
+
+input CircleInput {
+  "Circle adding timestamp"
+  timestamp: Float!
+  "X coordinate of circle"
+  x: Float!
+  "Y coordinate of circle"
+  y: Float!
+}

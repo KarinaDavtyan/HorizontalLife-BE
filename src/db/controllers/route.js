@@ -22,6 +22,7 @@ const createRoute = async ({ data }) => {
       img_height,
       img_width,
       svg,
+      svg_points,
       svg_height,
       svg_width,
       svg_color,
@@ -37,18 +38,19 @@ const createRoute = async ({ data }) => {
       img_height,
       img_width,
       svg,
+      svg_points,
       svg_height,
       svg_width,
       svg_color,
       svg_type,
       tags
-    })
+    });
 
     if (route.insertedId) {
       const targetGym = await gyms.updateOne(
         { _id: new ObjectId(gym_id) },
         { $push: { routes: new ObjectId(route.insertedId) } }
-      )
+      );
       if (targetGym.modifiedCount > 0) {
         const res = {
           ...data,
@@ -65,7 +67,7 @@ const createRoute = async ({ data }) => {
     console.error(err.stack);
   }
   client.close();
-}
+};
 
 const getRoute = async (data) => {
   let client;

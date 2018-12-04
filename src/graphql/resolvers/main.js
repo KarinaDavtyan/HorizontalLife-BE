@@ -41,6 +41,7 @@ const resolvers =  {
           img_height: args.route.img_height,
           img_width: args.route.img_width,
           svg: args.route.svg,
+          svg_points: args.route.svg_points,
           svg_color: args.route.svg_color,
           svg_type: args.route.svg_type,
           svg_height: args.route.svg_height,

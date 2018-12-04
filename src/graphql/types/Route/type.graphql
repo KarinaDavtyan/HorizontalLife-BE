@@ -1,3 +1,5 @@
+# import * from "./circle.graphql"
+
 type Route {
   _id: ID!
   gym_id: ID!
@@ -6,7 +8,8 @@ type Route {
   img_url: String!
   img_height: Int!
   img_width: Int!
-  svg: String!
+  svg: String
+  svg_points: [Circle]
   svg_height: Int!
   svg_width: Int!
   svg_color: String!
@@ -39,7 +42,9 @@ input PostRoute {
   "Image width"
   img_width: Int!
   "SVG element shape"
-  svg: String!
+  svg: String
+  "Array of circles"
+  svg_points: [CircleInput]
   "Height of the svg container"
   svg_height: Int!
   "Width of the svg container"
@@ -49,11 +54,11 @@ input PostRoute {
   "Type of the drawing"
   svg_type: String!
   "Tags realted to the route style"
-  tags: [Tag]!
+  tags: [Tag]
 }
 
 type CreateRouteMutationResponse {
-  success: Boolean!
-  message: String!
+  success: Boolean
+  message: String
   route: Route
 }
