@@ -29,6 +29,6 @@
     "koa": "^2.8.1",
     "koa-router": "^7.4.0",
     "lodash.merge": "^4.6.2",
-    "mongodb": "^3.3.0"
+    "mongodb": "^3.3.2"
   }
 }
