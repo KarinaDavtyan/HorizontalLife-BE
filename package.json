@@ -25,7 +25,7 @@
     "dotenv": "^8.1.0",
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
-    "graphql-voyager": "^1.0.0-rc.27",
+    "graphql-voyager": "^1.0.0-rc.28",
     "koa": "^2.8.1",
     "koa-router": "^7.4.0",
     "lodash.merge": "^4.6.2",
