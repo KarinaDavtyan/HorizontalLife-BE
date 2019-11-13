@@ -21,7 +21,7 @@
     "eslint-plugin-import": "^2.18.2"
   },
   "dependencies": {
-    "apollo-server-koa": "^2.2.2",
+    "apollo-server-koa": "^2.9.8",
     "dotenv": "^8.1.0",
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
