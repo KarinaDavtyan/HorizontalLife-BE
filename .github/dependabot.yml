@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "10:00"
+    timezone: Europe/Prague
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.10
+  - dependency-name: ini
+    versions:
+    - 1.3.7
+  - dependency-name: mongodb
+    versions:
+    - 3.6.3
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
